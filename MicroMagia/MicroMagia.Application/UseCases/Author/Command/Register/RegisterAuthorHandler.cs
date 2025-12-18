@@ -14,14 +14,7 @@ public class RegisterAuthorHandler : HandlerBaseAuthor, IRequestHandler<Register
 
     public async Task<string?> Handle(RegisterAuthorCommand request, CancellationToken cancellationToken)
     {
-        try
-        {
-            return await RegisterAuthorAsync(request.Author);
-        }
-        catch (Exception e)
-        {
-            return null;
-        }
+        return await RegisterAuthorAsync(request.Author);
     }
 
     private async Task<string?> RegisterAuthorAsync(Domain.BackOffice.Entities.Author author)
@@ -39,7 +32,7 @@ public class RegisterAuthorHandler : HandlerBaseAuthor, IRequestHandler<Register
 
     private async Task<bool> AuthorExisting(string email)
     {
-        if(_ofWork.RepositoryAuthor.GetByPredicateOrNull(x=>x.User.Email.Address == email)
+        if(_ofWork.RepositoryAuthor.GetByEmailOrNull(email)
            is not null)
             return true;
         return false;

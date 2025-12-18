@@ -12,7 +12,7 @@ public class User : Entity
     }
     public User(Email email, string password)
     {
-        if (!IsValidPassword(password))
+        if (IsValidPassword(password))
             throw new UserException("Password is invalid");
         Id = Guid.NewGuid();
         Email = email;
@@ -23,7 +23,7 @@ public class User : Entity
     public string Password { get;private set; }
 
     private bool IsValidPassword(string password)
-        => string.IsNullOrEmpty(password) || password.Length > 3;
+        => string.IsNullOrEmpty(password) || password.Length < 3;
 
     public void UpdatePassword(string pass)
         => Password = pass;

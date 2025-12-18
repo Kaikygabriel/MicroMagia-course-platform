@@ -30,7 +30,7 @@ public class Student : Entity
         => Courses.Add(course);
     private bool IsValidName(string name)
     {
-        if (string.IsNullOrEmpty(name) || name.Length < 2)
+        if (string.IsNullOrEmpty(name) || name.Length <= 2)
             return false;
         return true;
     }

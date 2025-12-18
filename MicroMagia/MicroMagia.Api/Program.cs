@@ -5,8 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-const string connectionString =
-    "Server=localhost,1430;Database=MicroMagia;User ID=sa;Password=kaiky@2048;TrustServerCertificate=True;";
+var connectionString = builder.Configuration["ConnectionString:DefaultConnection"]!;
 
 builder.Services.AddDbContext<AppDbContext>(x=>
     x.UseSqlServer(connectionString,

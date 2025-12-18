@@ -17,6 +17,7 @@ public class UnitOfWork : IUnitOfWork
     private RepositoryCourse _repositoryCourse;
     private StudentRepository _studentRepository;
     private RepositoryCareer _repositoryCareer;
+    private RepositoryAuthor _repositoryAuthor;
     
     private readonly AppDbContext _context;
 
@@ -25,7 +26,13 @@ public class UnitOfWork : IUnitOfWork
         _context = context;
     }
 
-    public IRepositoryAuthor RepositoryAuthor { get; }
+    public IRepositoryAuthor RepositoryAuthor
+    {
+        get
+        {
+            return _repositoryAuthor = _repositoryAuthor ?? new(_context);
+        }
+    }
 
     public IRepositoryCareer RepositoryCareer
     {

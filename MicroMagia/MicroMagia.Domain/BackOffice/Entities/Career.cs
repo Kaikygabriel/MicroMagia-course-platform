@@ -10,6 +10,8 @@ public class Career : Entity
     }
     public Career(string title)
     {
+        if (!IsValidTitle(title))
+            throw new Exception("Career is invalid!");
         Id = Guid.NewGuid();
         Title = title;
     }
@@ -19,4 +21,11 @@ public class Career : Entity
 
     public void AddCourse(Course course)
         => Courses.Add(course);
+
+    private bool IsValidTitle(string title)
+    {
+        if (string.IsNullOrWhiteSpace(title) || title.Length <= 2)
+            return false;
+        return true;
+    } 
 }
