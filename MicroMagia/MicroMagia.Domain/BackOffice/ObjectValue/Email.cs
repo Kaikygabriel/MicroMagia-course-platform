@@ -10,7 +10,7 @@ public class Email
     }
     public Email(string address)
     {
-        if (!IsValidAddress(address))
+        if (IsValidAddress(address))
             throw new EmailException("Address is invalid ");
         Address = address;
     }
@@ -18,5 +18,5 @@ public class Email
     public string Address { get; set; }
 
     private bool IsValidAddress(string address)
-        => string.IsNullOrEmpty(address) || address.Contains('@') ;
+        => string.IsNullOrEmpty(address) || !(address.Contains('@')) ;
 }

@@ -10,7 +10,7 @@ public class Category
     }
     public Category(string name)
     {
-        if (!IsValidName(name))
+        if (IsValidName(name))
             throw new Exception("Category is invalid!");
         Name = name;
     }
@@ -19,7 +19,7 @@ public class Category
     public List<Course> Courses { get; private set; } = new();
 
     private bool IsValidName(string name)
-        => string.IsNullOrWhiteSpace(name) || name.Length > 2;
+        => string.IsNullOrWhiteSpace(name) || name.Length < 2;
 
     public void AddCourse(Course course)
         => Courses.Add(course);

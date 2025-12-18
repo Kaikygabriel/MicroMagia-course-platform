@@ -12,7 +12,14 @@ public class RegisterUserService : IRegisterUserService
     }
     public async Task<bool> Register(Domain.BackOffice.Entities.User request)
     {
-       return await RegisterUser( request);
+        try
+        {
+            return await RegisterUser( request);
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
     }
 
     private async Task<bool> RegisterUser(Domain.BackOffice.Entities.User request)
