@@ -12,8 +12,14 @@ public class CreateCourseHandler : HandlerBase , IRequestHandler<CreateCourseCom
 
     public async Task<bool> Handle(CreateCourseCommand request, CancellationToken cancellationToken)
     {
+        try
+        {
             return await Create(request);
-        
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
     }
 
     private async Task<bool> Create(CreateCourseCommand request)
