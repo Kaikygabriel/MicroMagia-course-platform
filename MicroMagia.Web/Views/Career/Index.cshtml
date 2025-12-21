@@ -1,0 +1,42 @@
+@model IEnumerable<MicroMagia.Domain.BackOffice.Entities.Career>
+
+<link rel="stylesheet" href="~/css/ViewIndexCareer.css" />
+
+@{
+    ViewData["Title"] = "Carreiras";
+}
+
+<h2 class="page-title">🚀 Carreiras</h2>
+
+@if (Model == null || !Model.Any())
+{
+    <div class="alert alert-light">
+        Nenhuma carreira cadastrada.
+    </div>
+}
+else
+{
+    <div class="career-container">
+        <div class="row g-4">
+            @foreach (var career in Model)
+            {
+                <div class="col-lg-4 col-md-6">
+                    <div class="career-card">
+
+                        <h5 class="career-title">
+                            @career.Title
+                        </h5>
+
+                        <hr></hr>
+                        <a asp-action="Details"
+                           asp-route-id="@career.Id"
+                           class="btn btn-career">
+                            Ver carreira →
+                        </a>
+
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}

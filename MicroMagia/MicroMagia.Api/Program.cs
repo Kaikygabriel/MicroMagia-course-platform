@@ -11,10 +11,7 @@ builder.Services.AddDbContext<AppDbContext>(x=>
     x.UseSqlServer(connectionString,
         b => b.MigrationsAssembly("MicroMagia.Api")));
 
-builder.Services.AddControllers()
-    .AddJsonOptions(opt =>
-        opt.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
-
+builder.Services.AddControllers();
 
 builder.Services.AddOpenApi();
 builder.Services.AddDependencyInjection();

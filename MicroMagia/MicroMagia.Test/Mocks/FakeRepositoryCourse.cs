@@ -78,4 +78,9 @@ public class FakeRepositoryCourse : IRepositoryCourse
     {
         _courses.RemoveAll(c => c.Id == entity.Id);
     }
+
+    public Task<IEnumerable<Course>> GetAllDapperAsync(int skip, int take)
+    {
+        throw new NotImplementedException();
+    }
 }

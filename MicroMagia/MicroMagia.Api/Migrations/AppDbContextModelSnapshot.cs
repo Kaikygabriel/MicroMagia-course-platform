@@ -106,6 +106,8 @@ namespace MicroMagia.Api.Migrations
                     b.HasIndex("CareerId");
 
                     b.ToTable("Courses", (string)null);
+
+                    b.ToSqlQuery("SELECT * FROM [Courses]");
                 });
 
             modelBuilder.Entity("MicroMagia.Domain.BackOffice.Entities.Student", b =>
@@ -176,7 +178,7 @@ namespace MicroMagia.Api.Migrations
 
             modelBuilder.Entity("MicroMagia.Domain.BackOffice.Entities.Course", b =>
                 {
-                    b.HasOne("MicroMagia.Domain.BackOffice.Entities.Author", null)
+                    b.HasOne("MicroMagia.Domain.BackOffice.Entities.Author", "Author")
                         .WithMany("Courses")
                         .HasForeignKey("AuthorId");
 
@@ -201,6 +203,8 @@ namespace MicroMagia.Api.Migrations
                             b1.WithOwner()
                                 .HasForeignKey("CourseId");
                         });
+
+                    b.Navigation("Author");
 
                     b.Navigation("Career");
 

@@ -1,0 +1,52 @@
+@model IEnumerable<MicroMagia.Domain.BackOffice.Entities.Course>
+<link rel="stylesheet" href="~/css/ViewIndexCourse.css" />
+
+
+<h2 class="page-title" style="border-left: 10px #1b6ec2 ">
+    
+    Cursos
+</h2>
+
+@if (Model is null || !Model.Any())
+{
+    <div class="alert alert-secondary">
+        Nenhum curso cadastrado.
+    </div>
+}
+else
+{
+    <div class="courses-container">
+        <div class="row g-4">
+            @foreach (var course in Model)
+            {
+                <div class="col-lg-4 col-md-6">
+                    <div class="course-card">
+
+                        <div class="course-body">
+                            <span class="badge badge-roxo">
+                                @course.Category?.Name
+                            </span>
+
+                            <h5 class="course-title">
+                                @course.Title
+                            </h5>
+
+                            <p class="course-summary">
+                                @course.Summary
+                            </p>
+                        </div>
+
+                        <div class="course-footer">
+                            <a asp-action="Details"
+                               asp-route-id="@course.Id"
+                               class="btn btn-roxo-outline btn-sm">
+                                Ver detalhes →
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}

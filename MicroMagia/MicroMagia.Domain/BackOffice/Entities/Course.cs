@@ -20,14 +20,17 @@ public class Course : Entity
     public Category Category{ get;private set; }
     public string Title { get;private set; }
     public string Summary { get;private set; }
-    public Career? Career { get;private set; }
+    public Guid? CareerId { get;private set; }
+    public Author? Author { get;private set; }
     
     public List<Student> Students { get;private set; } = new();
 
     public void AddStudent(Student student)
         => Students.Add(student);
 
-    public void AddCareer(Career career)
-        => Career = career;
+    public void AddCareer(Guid idCareer)
+        => CareerId= idCareer;
+    public void AddAuthor(Author author)
+        => Author = author;
     
 }

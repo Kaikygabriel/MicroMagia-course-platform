@@ -3,7 +3,9 @@ using MicroMagia.Application.UseCases.Courses.Command.Create;
 using MicroMagia.Application.UseCases.Courses.Query.GetAllCourse;
 using MicroMagia.Application.UseCases.Courses.Query.GetByCareerQuery;
 using MicroMagia.Application.UseCases.Courses.Query.GetById;
+using MicroMagia.Infra.Data.Context;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace MicroMagia.Api.Controllers;
 

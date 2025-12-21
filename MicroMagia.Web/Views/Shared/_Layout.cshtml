@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - MicroMagia</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    @RenderSection("Styles", required: false)
+</head>
+<body class="app-bg">
+
+<header class="app-header" >
+    <div class="container d-flex justify-content-between align-items-center">
+        <h1 class="logo" style="color: white;">MicroMagia</h1>
+
+        <nav class="app-nav">
+            <a asp-controller="Course" asp-action="Index">Cursos</a>
+        </nav>
+        <nav class="app-nav">
+            <a asp-controller="Career" asp-action="Index">Careiras</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container-fluid app-content-wrapper">
+    <div class="app-content" style="color: white;"> 
+        @RenderBody()
+    </div>
+</main>
+
+<script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

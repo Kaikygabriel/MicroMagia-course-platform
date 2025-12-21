@@ -15,7 +15,7 @@ public class Repository<T> : IRepository<T> where T : Entity
         _context = context;
     }
 
-    public async Task<IEnumerable<T>> GetAllAsync(int skip, int take)
+    public virtual async Task<IEnumerable<T>> GetAllAsync(int skip, int take)
     {
         if (skip > 50 || skip < 0) skip = 0;
         if (take > 50 || take < 0) skip = 50;

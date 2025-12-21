@@ -9,13 +9,13 @@ public class CourseTest
     public void Should_Return_True_When_Career_Be_added()
     {
         var course = new Course(new Category("teste"), "teste", "teste");
-        course.AddCareer(new Career("teste"));
-        Assert.True(course.Career is not null);
+        course.AddCareer(Guid.NewGuid());
+        Assert.True(course.CareerId is not null);
     }
     [Fact]
     public void Should_Return_False_When_Career_IsNotAdded()
     {
         var course = new Course(new Category("teste"), "teste", "teste");
-        Assert.False(course.Career is not null);
+        Assert.False(course.CareerId is not null);
     }
 }

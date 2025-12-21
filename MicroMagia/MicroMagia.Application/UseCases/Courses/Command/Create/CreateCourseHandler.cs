@@ -40,6 +40,6 @@ public class CreateCourseHandler : HandlerBase , IRequestHandler<CreateCourseCom
         if (career is null)
             return;
         career.AddCourse(request);
-        request.AddCareer(career);
+        request.AddCareer(career.Id);
     }
 }

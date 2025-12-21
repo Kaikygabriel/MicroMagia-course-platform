@@ -8,6 +8,7 @@ public class CourseMapping : IEntityTypeConfiguration<Course>
 {
     public void Configure(EntityTypeBuilder<Course> builder)
     {
+        builder.ToSqlQuery("SELECT * FROM [Courses]");
         builder.ToTable("Courses");
         builder.HasKey(x => x.Id);
 

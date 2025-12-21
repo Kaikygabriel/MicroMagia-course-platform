@@ -1,0 +1,79 @@
+/* Limita largura como Balta */
+.courses-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Card */
+.course-card {
+    background: linear-gradient(180deg, #4b2aa8 0%, #3a1f7a 100%);
+    border-radius: 18px;
+    padding: 1.6rem;
+    height: 100%;
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.course-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.45);
+}
+
+/* Corpo */
+.course-body {
+    text-align: left;
+}
+
+.course-title {
+    color: #ffffff;
+    font-weight: 600;
+    margin-top: .75rem;
+}
+
+.course-summary {
+    color: #e0d9ff;
+    font-size: .95rem;
+}
+
+/* Badge */
+.badge-roxo {
+    background: rgba(255,255,255,.15);
+    color: #fff;
+    padding: .4rem .9rem;
+    border-radius: 999px;
+    font-size: .75rem;
+}
+
+/* Footer */
+.course-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,.15);
+}
+
+.course-students {
+    color: #e0d9ff;
+    font-size: .85rem;
+}
+
+/* Botão */
+.btn-roxo-outline {
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 999px;
+    padding: .35rem .9rem;
+    font-size: .8rem;
+}
+
+.btn-roxo-outline:hover {
+    background: #fff;
+    color: #4b2aa8;
+}
