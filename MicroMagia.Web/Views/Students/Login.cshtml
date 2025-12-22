@@ -1,0 +1,58 @@
+@model MicroMagia.Web.Student.Models.Login.StudentLoginRequest
+
+@{
+    ViewData["Title"] = "Login do Estudante";
+}
+
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-lg p-4" style="width: 400px; border-radius: 16px;">
+
+        <h3 class="text-center mb-4 text-white p-3"
+            style="background-color: #6f42c1; border-radius: 12px;">
+            Login
+        </h3>
+
+        <form asp-action="Login" asp-controller="Students" method="post">
+
+            <!-- Email -->
+            <div class="mb-3">
+                <label asp-for="addressEmail" class="form-label fw-bold">Email</label>
+                <input asp-for="addressEmail"
+                       class="form-control"
+                       placeholder="email@exemplo.com" />
+                <span asp-validation-for="addressEmail" class="text-danger"></span>
+            </div>
+
+            <!-- Senha -->
+            <div class="mb-3">
+                <label asp-for="password" class="form-label fw-bold">Senha</label>
+                <input asp-for="password"
+                       type="password"
+                       class="form-control"
+                       placeholder="********" />
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+
+            <!-- Botão -->
+            <div class="d-grid mt-4">
+                <button type="submit"
+                        class="btn text-white fw-bold"
+                        style="background-color: #6f42c1;">
+                    Entrar
+                </button>
+            </div>
+        </form>
+
+        <div class="text-center mt-3">
+            <small class="text-muted">
+                Não tem conta?
+                <a href="/Students/Register"
+                   class="text-decoration-none"
+                   style="color:#6f42c1;">
+                    Criar conta
+                </a>
+            </small>
+        </div>
+    </div>
+</div>
+

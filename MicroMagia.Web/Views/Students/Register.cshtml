@@ -1,0 +1,56 @@
+@model MicroMagia.Web.Student.Models.StudentRegisterRequest
+
+@{
+ViewData["Title"] = "Cadastro de Estudante";
+}
+
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-lg p-4" style="width: 420px; border-radius: 16px;">
+
+        <h3 class="text-center mb-4 text-white p-3"
+            style="background-color: #6f42c1; border-radius: 12px;">
+            Cadastro do Estudante
+        </h3>
+
+        <form asp-action="Register" asp-controller="Students" method="post">
+
+            <!-- Nome -->
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label fw-bold">Nome</label>
+                <input asp-for="Name" class="form-control" placeholder="Seu nome completo" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+                <label asp-for="userDto.Email" class="form-label fw-bold">Email</label>
+                <input asp-for="userDto.Email" class="form-control" placeholder="email@exemplo.com" />
+                <span asp-validation-for="userDto.Email" class="text-danger"></span>
+            </div>
+
+            <!-- Senha -->
+            <div class="mb-3">
+                <label asp-for="userDto.Password" class="form-label fw-bold">Senha</label>
+                <input asp-for="userDto.Password" type="password" class="form-control" placeholder="********" />
+                <span asp-validation-for="userDto.Password" class="text-danger"></span>
+            </div>
+
+            <!-- Botão -->
+            <div class="d-grid mt-4">
+                <button type="submit" class="btn text-white fw-bold"
+                        style="background-color: #6f42c1;">
+                    Criar Conta
+                </button>
+            </div>
+        </form>
+
+        <div class="text-center mt-3">
+            <small class="text-muted">
+                Já possui conta?
+                <a href="/Students/Login" class="text-decoration-none" style="color:#6f42c1;">
+                    Entrar
+                </a>
+            </small>
+        </div>
+    </div>
+</div>

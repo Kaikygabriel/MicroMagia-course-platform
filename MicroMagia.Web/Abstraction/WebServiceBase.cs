@@ -1,13 +1,13 @@
 using System.Text.Json;
 
-namespace MicroMagia.Web.Controllers.Abstraction;
+namespace MicroMagia.Web.Abstraction;
 
-public abstract class ServiceBase
+public abstract class WebServiceBase
 {
     protected readonly IHttpClientFactory _clientFactory;
     protected readonly JsonSerializerOptions _options;
     
-    public ServiceBase(IHttpClientFactory clientFactory)
+    public WebServiceBase(IHttpClientFactory clientFactory)
     {
         _clientFactory = clientFactory;
         _options = new JsonSerializerOptions{ PropertyNameCaseInsensitive = true };

@@ -1,13 +1,13 @@
 using System.Text.Json;
-using MicroMagia.Web.Controllers.Abstraction;
+using MicroMagia.Web.Abstraction;
 using MicroMagia.Web.Course.Interfaces;
 using MicroMagia.Web.Course.Models;
 
 namespace MicroMagia.Web.Course.Service;
 
-public class CourseService : ServiceBase,ICourseService
+public class CourseWebService : WebServiceBase,ICourseService
 {
-    public CourseService(IHttpClientFactory clientFactory) : base(clientFactory)
+    public CourseWebService(IHttpClientFactory clientFactory) : base(clientFactory)
     {
     }
 

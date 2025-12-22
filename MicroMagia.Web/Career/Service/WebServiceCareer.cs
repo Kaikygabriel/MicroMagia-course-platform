@@ -1,12 +1,12 @@
 using System.Text.Json;
+using MicroMagia.Web.Abstraction;
 using MicroMagia.Web.Career.Interfaces;
-using MicroMagia.Web.Controllers.Abstraction;
 
 namespace MicroMagia.Web.Career.Service;
 
-public class ServiceCareer :ServiceBase, IServiceCareer
+public class WebServiceCareer :WebServiceBase, IServiceCareer
 {
-    public ServiceCareer(IHttpClientFactory clientFactory) : base(clientFactory)
+    public WebServiceCareer(IHttpClientFactory clientFactory) : base(clientFactory)
     {
         
     }

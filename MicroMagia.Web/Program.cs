@@ -2,14 +2,17 @@ using MicroMagia.Web.Career.Interfaces;
 using MicroMagia.Web.Career.Service;
 using MicroMagia.Web.Course.Interfaces;
 using MicroMagia.Web.Course.Service;
+using MicroMagia.Web.Student.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient("MicroMagia", x =>
     x.BaseAddress = new Uri(builder.Configuration["ClientsHttp:BaseUrl"]!));
-builder.Services.AddScoped<ICourseService, CourseService>();
-builder.Services.AddScoped<IServiceCareer,ServiceCareer>();
+builder.Services.AddScoped<ICourseService, CourseWebService>();
+builder.Services.AddScoped<IServiceCareer,WebServiceCareer>();
+builder.Services.AddScoped<AuthServiceStudent>();
+
 
 var app = builder.Build();
 
