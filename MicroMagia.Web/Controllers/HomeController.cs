@@ -8,6 +8,9 @@ public class HomeController : Controller
 {
     public IActionResult Index()
     {
+        var email = Request.Cookies["Email-x"];
+        ViewData["UserEmail"] = email;
+
         return View();
     }
 

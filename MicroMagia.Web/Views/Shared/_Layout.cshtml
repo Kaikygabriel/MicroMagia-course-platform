@@ -10,28 +10,92 @@
     <link rel="stylesheet" href="~/css/site.css" />
 
     @RenderSection("Styles", required: false)
+    <style>
+        .app-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            line-height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .user-avatar {
+            width: 42px;
+            height: 42px;
+            background-color: #ffffff;
+            color: #7c3aed;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-weight: 800;
+            font-size: 18px;
+            font-family: "Segoe UI", system-ui, sans-serif;
+
+            border: 2px solid #7c3aed;
+            cursor: pointer;
+            flex-shrink: 0;
+
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .user-avatar:hover {
+            transform: scale(1.08);
+            box-shadow: 0 6px 16px rgba(124, 58, 237, 0.4);
+        }
+
+    </style>
 </head>
+
+@{
+    var email = Context.Request.Cookies["Email-x"];
+    var firstLetter = !string.IsNullOrEmpty(email)
+        ? email.Substring(0, 1).ToUpper()
+        : "?";
+}
+
 <body class="app-bg">
 
-<header class="app-header" >
-    <div class="container d-flex justify-content-between align-items-center">
-        <h1 class="logo" style="color: white;">MicroMagia</h1>
+<header class="app-header">
+    <div class="container d-flex align-items-center">
 
-        <nav class="app-nav">
-            <a asp-controller="Course" asp-action="Index">Cursos</a>
-        </nav>
-        <nav class="app-nav">
-            <a asp-controller="Career" asp-action="Index">Careiras</a>
-        </nav>
+        <!-- Logo (esquerda) -->
+        <h1 class="logo text-white m-0">MicroMagia</h1>
+
+        <!-- Menu + Avatar (direita) -->
+        <div class="flex-md-rowow align-items-center justify-content-between gap-4 ms-auto">
+
+            <nav class="app-nav d-flex align-items-center gap-4">
+                <a asp-controller="Course" asp-action="Index">Cursos</a>
+                <a asp-controller="Career" asp-action="Index">Carreiras</a>
+                
+            </nav>
+
+            @if (!string.IsNullOrEmpty(email))
+            {
+                <div class="user-avatar" title="@email">
+                    @firstLetter
+                </div>
+            }
+
+        </div>
+
     </div>
 </header>
 
+
 <main class="container-fluid app-content-wrapper">
-    <div class="app-content" style="color: white;"> 
+    <div class="app-content text-white">
         @RenderBody()
     </div>
 </main>
 
 <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+@RenderSection("Scripts", required: false)
+
 </body>
 </html>

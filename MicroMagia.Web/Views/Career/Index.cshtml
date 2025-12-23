@@ -6,7 +6,7 @@
     ViewData["Title"] = "Carreiras";
 }
 
-<h2 class="page-title">🚀 Carreiras</h2>
+<h2 class="page-title"> Carreiras</h2>
 
 @if (Model == null || !Model.Any())
 {
@@ -27,10 +27,11 @@ else
                             @career.Title
                         </h5>
 
-                        <hr></hr>
                         <a asp-action="Details"
                            asp-route-id="@career.Id"
-                           class="btn btn-career">
+                           class="btn btn-career"
+                           style="padding-top: 10px" 
+                           >
                             Ver carreira →
                         </a>
 

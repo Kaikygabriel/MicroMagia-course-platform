@@ -8,6 +8,9 @@ namespace MicroMagia.Web.Controllers;
 [Route("[controller]")]
 public class StudentsController : Controller
 {
+    private const string COOKIES_EMAIL = "Email-x";
+
+    private const string COOKIES_TOKEN = "Token-x";
     private readonly AuthServiceStudent _authServiceStudent;
 
     public StudentsController(AuthServiceStudent authServiceStudent)
@@ -18,6 +21,8 @@ public class StudentsController : Controller
     [HttpGet("Register")]
     public IActionResult Register()
     {
+        if(TokenExists())
+            return RedirectToAction("Index","Home");
         return View();
     } 
     [HttpPost("Register")]
@@ -26,7 +31,7 @@ public class StudentsController : Controller
         var result = await _authServiceStudent.Register(request);
         if (result is null)
             return View(request);
-        Response.Cookies.Append("Token-x",result.Token);
+        CreateCookies(result);
         
         return RedirectToAction("Index","Home");
     } 
@@ -34,6 +39,8 @@ public class StudentsController : Controller
     [HttpGet("Login")]
     public IActionResult Login()
     {
+        if(TokenExists())
+            return RedirectToAction("Index","Home");
         return View();
     } 
     [HttpPost("Login")]
@@ -42,8 +49,21 @@ public class StudentsController : Controller
         var result = await _authServiceStudent.login(request);
         if (result is null)
             return View(request);
-        Response.Cookies.Append("Token-x",result.Token);
+        CreateCookies(result);
         
         return RedirectToAction("Index","Home");
-    } 
+    }
+
+    private bool TokenExists()
+    {
+        if (Request.Cookies.TryGetValue(COOKIES_TOKEN, out string tokenCookie))
+            return true;
+        return false;
+    }
+
+    private void CreateCookies(StudentAuthResponse model)
+    {
+        Response.Cookies.Append(COOKIES_TOKEN,model.Token);
+        Response.Cookies.Append(COOKIES_EMAIL,model.Email);
+    }
 }
