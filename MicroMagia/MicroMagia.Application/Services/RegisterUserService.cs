@@ -28,7 +28,6 @@ public class RegisterUserService : IRegisterUserService
         {
             AddHashPasswordInUser(request);
             _ofWork.RepositoryUser.Create(request);
-        
             return true;
         }
         return false;

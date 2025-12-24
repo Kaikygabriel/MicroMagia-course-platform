@@ -13,7 +13,7 @@ public class FakeUnitOfWork : IUnitOfWork
     public IRepositoryCareer RepositoryCareer { get; } = new FakeRepositoryCareer();
     public IRepositoryCourse RepositoryCourse { get; } = new FakeRepositoryCourse();
     public IRepositoryStudent RepositoryStudent { get; }
-    public IRepositoryUser RepositoryUser { get; }
+    public IRepositoryUser RepositoryUser { get; } = new FakeRepositoryUser();
     public async Task CommitAsync()
     {
         await Task.Delay(0);

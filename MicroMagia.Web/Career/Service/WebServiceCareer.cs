@@ -20,4 +20,13 @@ public class WebServiceCareer :WebServiceBase, IServiceCareer
         return JsonSerializer.Deserialize<IEnumerable<Domain.BackOffice.Entities.Career>>(content,_options);
 
     }
+    
+    public async Task<IEnumerable<Domain.BackOffice.Entities.Course>> GetCoursesByCareer(string titleCareer,int page = 0)
+    {
+        var client = _clientFactory.CreateClient("MicroMagia");
+        using var response = await client.GetAsync($"Course/GetByCareer?TitleCareer={titleCareer}");
+        if (!response.IsSuccessStatusCode) return null;
+        var content = await response.Content.ReadAsStreamAsync();
+        return JsonSerializer.Deserialize<IEnumerable<Domain.BackOffice.Entities.Course>>(content,_options);
+    }
 }

@@ -19,4 +19,11 @@ public class CareerController : Controller
         var career = await _service.GetCareer();
         return View(career);
     }
+
+    [HttpGet("GetCoursesByCareer")]
+    public async Task<ActionResult> GetCoursesByCareer([FromQuery]string id)
+    {
+        var courses = await _service.GetCoursesByCareer(id);
+        return View(courses);
+    } 
 }
